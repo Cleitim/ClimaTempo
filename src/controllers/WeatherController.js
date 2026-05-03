@@ -1,6 +1,5 @@
-import { fetchCurrentWeather, fetchForecast } from '../services/weatherApi'
-import { createWeatherModel } from '../models/WeatherModel'
-import { createForecastModel } from '../models/ForecastModel'
+import { getWeatherData } from '../services/WeatherService'
+export { validateCity } from './SearchController'
 
 const CACHE_KEY = 'climatempo_last'
 const TTL = Number(import.meta.env.VITE_CACHE_TTL_MINUTES ?? 10) * 60 * 1000
@@ -18,20 +17,15 @@ export function loadCachedWeather() {
 }
 
 function saveCache(data) {
-  localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }))
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }))
+  } catch {
+    // localStorage indisponível ou cheio
+  }
 }
 
 export async function searchWeather(city) {
-  const [weatherRaw, forecastRaw] = await Promise.all([
-    fetchCurrentWeather(city),
-    fetchForecast(city),
-  ])
-
-  const result = {
-    weather: createWeatherModel(weatherRaw),
-    forecast: createForecastModel(forecastRaw),
-  }
-
+  const result = await getWeatherData(city)
   saveCache(result)
   return result
 }

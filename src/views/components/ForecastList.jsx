@@ -1,8 +1,8 @@
-import { useWeather } from '../../context/WeatherContext'
+import { useForecast } from '../../context/WeatherContext'
 import { formatTemp, formatDay, getWeatherIconUrl } from '../../utils/formatters'
 
 export default function ForecastList() {
-  const { forecast } = useWeather()
+  const { forecast } = useForecast()
   if (!forecast?.length) return null
 
   return (

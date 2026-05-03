@@ -1,4 +1,4 @@
-import { useWeather } from '../../context/WeatherContext'
+import { useWeatherStatus } from '../../context/WeatherContext'
 import SearchBar from '../components/SearchBar'
 import WeatherCard from '../components/WeatherCard'
 import ForecastList from '../components/ForecastList'
@@ -6,7 +6,7 @@ import RainIndicator from '../components/RainIndicator'
 import LoadingSpinner from '../components/LoadingSpinner'
 
 export default function Home() {
-  const { status, weather } = useWeather()
+  const { status, hasWeather } = useWeatherStatus()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 flex flex-col items-center px-4 py-10">
@@ -20,7 +20,7 @@ export default function Home() {
       <main className="mt-8 w-full flex flex-col items-center gap-6">
         {status === 'loading' && <LoadingSpinner />}
 
-        {status === 'success' && weather && (
+        {status === 'success' && hasWeather && (
           <>
             <div className="w-full max-w-lg flex gap-4 items-start">
               <div className="flex-1">

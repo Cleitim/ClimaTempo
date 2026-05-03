@@ -1,17 +1,16 @@
 import { createContext, useContext, useReducer, useEffect } from 'react'
-import { searchWeather, loadCachedWeather } from '../controllers/WeatherController'
-import { validateCity } from '../controllers/SearchController'
+import { searchWeather, loadCachedWeather, validateCity } from '../controllers/WeatherController'
 
 const WeatherContext = createContext(null)
 
-const initialState = {
+export const initialState = {
   weather: null,
   forecast: [],
   status: 'idle',
   error: null,
 }
 
-function reducer(state, action) {
+export function reducer(state, action) {
   switch (action.type) {
     case 'FETCH_START':
       return { ...state, status: 'loading', error: null }
@@ -19,8 +18,6 @@ function reducer(state, action) {
       return { ...state, status: 'success', weather: action.payload.weather, forecast: action.payload.forecast }
     case 'FETCH_ERROR':
       return { ...state, status: 'error', error: action.payload }
-    case 'RESTORE_CACHE':
-      return { ...state, status: 'success', weather: action.payload.weather, forecast: action.payload.forecast }
     default:
       return state
   }
@@ -31,7 +28,7 @@ export function WeatherProvider({ children }) {
 
   useEffect(() => {
     const cached = loadCachedWeather()
-    if (cached) dispatch({ type: 'RESTORE_CACHE', payload: cached })
+    if (cached) dispatch({ type: 'FETCH_SUCCESS', payload: cached })
   }, [])
 
   async function search(city) {
@@ -46,10 +43,13 @@ export function WeatherProvider({ children }) {
       const result = await searchWeather(validation.value)
       dispatch({ type: 'FETCH_SUCCESS', payload: result })
     } catch (err) {
+      const status = err.response?.status
       const message =
-        err.response?.status === 404
+        status === 404
           ? 'Cidade não encontrada. Verifique o nome e tente novamente.'
-          : 'Erro ao buscar dados. Tente novamente em instantes.'
+          : status === 429
+            ? 'Limite de requisições atingido. Aguarde alguns instantes.'
+            : 'Erro ao buscar dados. Tente novamente em instantes.'
       dispatch({ type: 'FETCH_ERROR', payload: message })
     }
   }
@@ -59,6 +59,31 @@ export function WeatherProvider({ children }) {
       {children}
     </WeatherContext.Provider>
   )
+}
+
+export function useSearchBar() {
+  const { search, status, error } = useContext(WeatherContext)
+  return { search, status, error }
+}
+
+export function useWeatherCard() {
+  const { weather } = useContext(WeatherContext)
+  return { weather }
+}
+
+export function useForecast() {
+  const { forecast } = useContext(WeatherContext)
+  return { forecast }
+}
+
+export function useRainIndicator() {
+  const { weather } = useContext(WeatherContext)
+  return { rainChance: weather?.rainChance ?? null }
+}
+
+export function useWeatherStatus() {
+  const { status, weather } = useContext(WeatherContext)
+  return { status, hasWeather: !!weather }
 }
 
 export function useWeather() {

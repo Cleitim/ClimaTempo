@@ -1,4 +1,4 @@
-import { useWeather } from '../../context/WeatherContext'
+import { useRainIndicator } from '../../context/WeatherContext'
 
 function getRainColor(pct) {
   if (pct <= 30) return { stroke: '#22c55e', label: 'Sem chuva prevista' }
@@ -7,14 +7,13 @@ function getRainColor(pct) {
 }
 
 export default function RainIndicator() {
-  const { weather } = useWeather()
-  if (!weather) return null
+  const { rainChance } = useRainIndicator()
+  if (rainChance === null) return null
 
-  const pct = weather.rainChance
-  const { stroke, label } = getRainColor(pct)
+  const { stroke, label } = getRainColor(rainChance)
   const radius = 36
   const circumference = 2 * Math.PI * radius
-  const offset = circumference - (pct / 100) * circumference
+  const offset = circumference - (rainChance / 100) * circumference
 
   return (
     <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur rounded-2xl p-5 text-white w-full max-w-[180px]">
@@ -29,7 +28,7 @@ export default function RainIndicator() {
           style={{ transition: 'stroke-dashoffset 0.6s ease' }}
         />
       </svg>
-      <span className="text-2xl font-bold -mt-14">{pct}%</span>
+      <span className="text-2xl font-bold -mt-14">{rainChance}%</span>
       <span className="text-xs opacity-70 mt-8 text-center leading-tight">{label}</span>
       <span className="text-xs font-medium">Chuva</span>
     </div>

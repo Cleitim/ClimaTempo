@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { useWeather } from '../../context/WeatherContext'
+import { useSearchBar } from '../../context/WeatherContext'
 
 export default function SearchBar() {
   const [input, setInput] = useState('')
-  const { search, status, error } = useWeather()
+  const { search, status, error } = useSearchBar()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -19,6 +19,7 @@ export default function SearchBar() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Buscar cidade..."
           aria-label="Nome da cidade"
+          maxLength={100}
           className="flex-1 px-4 py-3 rounded-xl bg-white/20 backdrop-blur text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 text-sm"
         />
         <button
