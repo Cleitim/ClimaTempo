@@ -15,7 +15,7 @@ Aplicação web frontend com arquitetura MVC que consome a API do OpenWeatherMap
   </tr>
 </table>
 
-> 🔗 **Deploy:** _URL disponível após o primeiro deploy na Vercel._
+> 🔗 **Deploy:** [ct-akci-502gevziw-cleitimhos-2939s-projects.vercel.app](https://ct-akci-502gevziw-cleitimhos-2939s-projects.vercel.app/)
 
 ---
 
@@ -208,6 +208,8 @@ Os arquivos ficam em `src/__tests__/`. Resultados da última execução: [`docs/
 4. Clique em **Deploy**
 
 ### Deploy contínuo
+
+O projeto está publicado em: [ct-akci-502gevziw-cleitimhos-2939s-projects.vercel.app](https://ct-akci-502gevziw-cleitimhos-2939s-projects.vercel.app/)
 
 A cada push na branch `master`, o Vercel dispara o build e publica automaticamente. Nenhuma configuração adicional é necessária.
 
