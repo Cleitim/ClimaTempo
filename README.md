@@ -1,5 +1,8 @@
 # ClimaTempo
 
+[![Release](https://img.shields.io/github/v/release/Cleitim/ClimaTempo)](https://github.com/Cleitim/ClimaTempo/releases/tag/v1.0.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 Aplicação web frontend com arquitetura MVC que consome a API do OpenWeatherMap e exibe temperatura, umidade, probabilidade de chuva e previsão de 5 dias para qualquer cidade buscada.
 
 ## Demonstração
@@ -256,4 +259,6 @@ Decisões de arquitetura rastreadas por prompt:
 
 ## Licença
 
-MIT
+Este projeto está licenciado sob a [MIT License](./LICENSE).
+
+Copyright (c) 2026 Cleiton — livre para usar, modificar e distribuir com preservação do aviso de copyright.
