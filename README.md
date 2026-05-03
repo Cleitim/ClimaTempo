@@ -4,11 +4,18 @@ Aplicação web frontend com arquitetura MVC que consome a API do OpenWeatherMap
 
 ## Demonstração
 
-| Mobile (375px) | Desktop (1280px) |
-|---|---|
-| _screenshot em breve_ | _screenshot em breve_ |
+<table>
+  <tr>
+    <td align="center"><b>Desktop (1280px)</b></td>
+    <td align="center"><b>Mobile (375px)</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/desktop.png" alt="ClimaTempo Desktop" width="480"/></td>
+    <td><img src="docs/screenshots/mobile.png" alt="ClimaTempo Mobile" width="200"/></td>
+  </tr>
+</table>
 
-> Deploy planejado via Vercel. URL será atualizada aqui após o primeiro deploy.
+> 🔗 **Deploy:** _URL disponível após o primeiro deploy na Vercel._
 
 ---
 

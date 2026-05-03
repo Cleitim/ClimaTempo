@@ -52,38 +52,6 @@ Resposta : Apenas bloco Mermaid com o arquivo no repositorio
 
 ### Prompt 04
 
-**Contexto:** Execução local do projeto  
-**Prompt:**
-```
-execute a aplicação
-```
-
----
-
-### Prompt 05
-
-**Contexto:** Versionamento dos novos arquivos criados  
-**Prompt:**
-```
-Contexto : novos arquivos criados
-Objetivo : sugerir 3 mensagens de commit no padrão Conventional Commits
-Resposta : commit para o github
-```
-
----
-
-### Prompt 06
-
-**Contexto:** Auditoria de qualidade do código  
-**Prompt:**
-```
-me mostre o git history
-```
-
----
-
-### Prompt 07
-
 **Contexto:** Análise de qualidade do código  
 **Prompt:**
 ```
@@ -96,7 +64,7 @@ resposta em um checklist
 
 ---
 
-### Prompt 08
+### Prompt 05
 
 **Contexto:** Refatoração — redução de acoplamento  
 **Prompt:**
@@ -110,7 +78,7 @@ melhorar esses pontos de acoplamento
 
 ---
 
-### Prompt 09
+### Prompt 06
 
 **Contexto:** Qualidade — funções redundantes e validações  
 **Prompt:**
@@ -130,7 +98,7 @@ verificar as funções redundantes e arrumar e as validações também
 
 ---
 
-### Prompt 10
+### Prompt 07
 
 **Contexto:** Criação da suíte de testes  
 **Prompt:**
@@ -145,14 +113,3 @@ criar uma pasta de teste e fazer um teste para cada um deste itens abaixo
 e me gravar o resultados dos testes
 ```
 
----
-
-### Prompt 11
-
-**Contexto:** Documentação de testes  
-**Prompt:**
-```
-adicionar modo como fazer teste no README.md , atualizar também o arquivo @docs/prompts.md
-```
-
----
