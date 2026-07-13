@@ -226,6 +226,7 @@ A cada push na branch `master`, o Vercel dispara o build e publica automaticamen
 | [`docs/backlog.md`](docs/backlog.md) | Backlog com IDs RF/RT e critérios de aceite por release |
 | [`docs/diagrama-componentes.md`](docs/diagrama-componentes.md) | Diagrama Mermaid de componentes e fluxo de dados |
 | [`docs/test-results.md`](docs/test-results.md) | Resultado da última execução dos testes |
+| [`docs/gestao-de-riscos.md`](docs/gestao-de-riscos.md) | Registro de riscos, análise de exposição e estratégias de resposta |
 | [`docs/prompts.md`](docs/prompts.md) | Histórico de prompts usados no desenvolvimento |
 
 ---
